@@ -247,16 +247,16 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     
     //solicitar letras mientras haya intentos y la palabra no haya sido descubierta:
     
-    //If($palabraFueDescubierta){
+    If($palabraFueDescubierta){
         //obtener puntaje:
         
         echo "\n¡¡¡¡¡¡GANASTE ".$puntaje." puntos!!!!!!\n";
-    //}else{
+    }else{
         echo "\n¡¡¡¡¡¡AHORCADO AHORCADO!!!!!!\n";
     }
     
     return $puntaje;
-//}
+}
 
 /**
 * Agrega un nuevo juego al arreglo de juegos
