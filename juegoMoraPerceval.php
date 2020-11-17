@@ -3,9 +3,6 @@
 *Completar:
 * Augusto y Jota
 ******************************************/
-//prueba commit222
-
-
 
 /**
 * genera un arreglo de palabras para jugar
@@ -20,14 +17,13 @@ function cargarPalabras(){
   $coleccionPalabras[4]= array("palabra"=> "avion" , "pista" => "tiene alas", "puntosPalabra"=> 8);
   $coleccionPalabras[5]= array("palabra"=> "celular" , "pista" => "dispositivo de comunicacion", "puntosPalabra"=> 8);
   $coleccionPalabras[6]= array("palabra"=> "mate" , "pista" => "se comparte", "puntosPalabra"=> 7);
- 
-
   
   return $coleccionPalabras;
 }
 
-/**
-* /*>>> completar comentario <<<*/
+/** Carga Coleccion de Juegos con sus puntajes y el indice que palabra se jugo
+*@return array
+*/
 
 function cargarJuegos(){
 	$coleccionJuegos = array();
@@ -61,8 +57,6 @@ function dividirPalabraEnLetras($palabra){
 } 
     
 
-
-<?php
 /**
 * muestra y obtiene una opcion de menú ***válida***
 * @return int
@@ -80,7 +74,7 @@ function seleccionarOpcion(){
         echo "\n ( 7 ) Mostrar la lista de palabras ordenada por puntaje"; 
         echo "\n ( 8 ) Salir"; 
         echo "--------------------------------------------------------------\n";
-        
+        // Validamos la opcion ingresada sino solicitamos ingrese un opcion correcta
         do{
             echo "Indique una opcion valida";
             $opcion = (trim(fgets(STDIN)));
@@ -144,11 +138,10 @@ function existeLetra($coleccionLetras,$letra){
 
 
 /**
-* Obtener indice aleatorio
+* Obtener indice aleatorio entre 2 numeros $min y $max
 *@param $min
 *@param $max
-*@return INT $i
- *>>> Completar documentacion <<<
+*@return int $i
 **/
 function indiceAleatorioEntre($min,$max){
     $i = rand($min,$max); // /*>>> rand — Genera un número entero aleatorio entro los valores $min y $max <<<*/
