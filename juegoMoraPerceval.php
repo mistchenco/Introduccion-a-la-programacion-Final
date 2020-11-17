@@ -1,7 +1,7 @@
 <?php
 /******************************************
 *Completar:
-* Augusto y Jota
+* Augusto y Jota    
 ******************************************/
 
 /**
@@ -87,7 +87,8 @@ function seleccionarOpcion(){
         }while(!$opcionValida);
         
         return $opcion;
-    }
+}
+
 /**
 * Determina si una palabra existe en el arreglo de palabras
 * @param array $coleccionPalabras
@@ -114,18 +115,16 @@ function existePalabra($coleccionPalabras,$palabra){
 * @return boolean
 */
 function existeLetra($coleccionLetras,$letra){
-    $contPalabras = count($coleccionLetras);
-    for($i=0; $i<$contPalabras; $i++){
-            
-              if (($coleccionLetras[$i]["letra"]==$letra)){
-                //$coleccionLetras[$i]["descubierta"]=true;
-                $descubierta=true;
-              }else{
-                $descubierta=false;
-                //$coleccionLetras[$i]["descubierta"]=false;
-    
-    return $descubierta;  
-    
+    $cuentaLetras = count($coleccionLetras);
+    $i=0
+    $descubierta = false;
+    do{
+        if (($coleccionLetras[$i]["letra"]==$letra)){
+          $descubierta=true;
+        }
+        $i++          
+    }while(!($i < $cuentaLetras));
+    return $descubierta;      
 }
 
 /**
