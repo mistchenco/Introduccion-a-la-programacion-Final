@@ -1,7 +1,7 @@
 <?php
 /******************************************
 *Completar:
-* NOMBRe Y APELLIDOS - LEGAJOS
+* Augusto y Jota
 ******************************************/
 //prueba commit222
 
