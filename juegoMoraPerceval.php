@@ -116,13 +116,13 @@ function existePalabra($coleccionPalabras,$palabra){
 */
 function existeLetra($coleccionLetras,$letra){
     $cuentaLetras = count($coleccionLetras);
-    $i=0
+    $i=0;
     $descubierta = false;
     do{
         if (($coleccionLetras[$i]["letra"]==$letra)){
           $descubierta=true;
         }
-        $i++          
+        $i++;        
     }while(!($i < $cuentaLetras));
     return $descubierta;      
 }
@@ -133,6 +133,7 @@ function existeLetra($coleccionLetras,$letra){
 * @param array $coleccionPalabras
 * @return array  colección de palabras modificada con la nueva palabra.
 */
+function agregarPalabra()
 /*>>> Completar la interfaz y cuerpo de la función. Debe respetar la documentación <<<*/
 
 
@@ -255,7 +256,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
 /**
 * Agrega un nuevo juego al arreglo de juegos
 * @param array $coleccionJuegos
-* @param int $ptos
+* @param int $puntos
 * @param int $indicePalabra
 * @return array coleccion de juegos modificada
 */
