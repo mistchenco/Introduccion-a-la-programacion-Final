@@ -171,13 +171,22 @@ function solicitarIndiceEntre($min,$max){
 * @return boolean
 */
 function palabraDescubierta($coleccionLetras){
-    
-    /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
+    //$palabradescubierta boolean
+    $palabraDescubierta=true;
+    $i=0;
+    $fin=count ($coleccionLetras);
+    while($palabraDescubierta && $i<$fin){
+        if(!($coleccionLetras[$i]["descubierta"])){
+            $palabraDescubierta=false;
+        }
+    $i++;
+    }
+return $palabraDescubierta;    
 }
 
 /**
 * /*>>> Completar documentacion <<<*/
-*/
+
 function solicitarLetra(){
     $letraCorrecta = false;
     do{
@@ -272,8 +281,11 @@ function agregarJuego($coleccionJuegos,$puntos,$indicePalabra){
 */
 function mostrarPalabra($coleccionPalabras,$indicePalabra){
     //$coleccionPalabras[0]= array("palabra"=> "papa" , "pista" => "se cultiva bajo tierra", "puntosPalabra"=>7);
-    
-    /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
+    echo "Su Palabra: " . $coleccionPalabras[$indicePalabra]["palabra"] . "\n";
+    echo "La Pista de dicha palabra es: " . $coleccionPalabras[$indicePalabra]["pista"] . "\n";
+    echo "Puntos de la palabra: " . $coleccionPalabras[$indicePalabra]["puntosPalabra"] . "\n";
+      
+
 }
 
 
