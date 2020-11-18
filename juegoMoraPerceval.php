@@ -133,7 +133,7 @@ function existeLetra($coleccionLetras,$letra){
 * @param array $coleccionPalabras
 * @return array  colección de palabras modificada con la nueva palabra.
 */
-function agregarPalabra()
+function agregarPalabra()//prueba
 /*>>> Completar la interfaz y cuerpo de la función. Debe respetar la documentación <<<*/
 
 
