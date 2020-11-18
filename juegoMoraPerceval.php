@@ -136,7 +136,7 @@ function existeLetra($coleccionLetras,$letra){
 function agregarPalabra()//prueba
 /*>>> Completar la interfaz y cuerpo de la función. Debe respetar la documentación <<<*/
 
-
+//okkey
 /**
 * Obtener indice aleatorio entre 2 numeros $min y $max
 *@param $min
