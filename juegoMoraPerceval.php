@@ -133,21 +133,23 @@ function existeLetra($coleccionLetras,$letra){
 * @param array $coleccionPalabras
 * @return array  colección de palabras modificada con la nueva palabra.
 */
-function agregarPalabra()//prueba
+function agregarPalabra(){
+}//prueba
 /*>>> Completar la interfaz y cuerpo de la función. Debe respetar la documentación <<<*/
 
 //okkey
 /**
 * Obtener indice aleatorio entre 2 numeros $min y $max
-*@param $min
-*@param $max
+*@param int $min
+*@param int $max
 *@return int $i
 **/
-function indiceAleatorioEntre($min,$max){
+
+  function indiceAleatorioEntre($min,$max){
+    
     $i = rand($min,$max); // /*>>> rand — Genera un número entero aleatorio entro los valores $min y $max <<<*/
     return $i;
-}
-
+  }
 /**
 * solicitar un valor entre min y max
 * @param int $min
@@ -171,6 +173,7 @@ function solicitarIndiceEntre($min,$max){
 * @return boolean
 */
 function palabraDescubierta($coleccionLetras){
+    while($descubierta)
     
     /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
 }
@@ -230,8 +233,10 @@ function stringLetrasDescubiertas($coleccionLetras){
 * @return int puntaje obtenido
 */
 function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
+    
     $pal = $coleccionPalabras[$indicePalabra]["palabra"];
     $coleccionLetras = dividirPalabraEnLetras($pal);
+    $palabraFueDescubierta=palabraDescubierta($coleccionLetras);
     //print_r($coleccionLetras);
     $puntaje = 0;
     
@@ -242,7 +247,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     
     //solicitar letras mientras haya intentos y la palabra no haya sido descubierta:
     
-    If($palabraFueDescubierta){
+    if($palabraFueDescubierta()){
         //obtener puntaje:
         
         echo "\n¡¡¡¡¡¡GANASTE ".$puntaje." puntos!!!!!!\n";
