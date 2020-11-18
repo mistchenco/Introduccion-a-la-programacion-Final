@@ -1,7 +1,7 @@
 <?php
 /******************************************
-*Completar:
-* Augusto y Jota    
+* MORA MARCOS, JUAN JULIAN  FAI-3133 jjulian.mora@est.fi.uncoma.edu.ar 
+* PERCEVAL, AUGUSTO FAI-3085 augusto.perceval@est.fi.uncoma.edu.ar
 ******************************************/
 
 /**
