@@ -260,7 +260,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     $coleccionLetras = dividirPalabraEnLetras($pal);
     $puntaje = 0;
     $pedirLetra=true;
-    $palabraFueDescubierta=palabraDescubierta($coleccionLetras);   
+    $palabraFueDescubierta=palabraDescubierta($coleccionLetras);
     
     
     /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
@@ -349,9 +349,9 @@ do{
     case 1: //Jugar con una palabra aleatoria
             $cantIntentos="CANT_INTENTOS";
             $min=0;
-            $maximo=count($coleccionPalabras);
+            $maximo=count($coleccionPalabrasPrincipal);
             $indiceAleatorioPrincipal=indiceAleatorioEntre($min,$maximo);
-            $jugarPrincipal=jugar($coleccionPalabras, $indiceAleatorioPrincipal, $cantIntentos);
+            $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceAleatorioPrincipal, $cantIntentos);
         break;
     case 2: //Jugar con una palabra elegida
 
