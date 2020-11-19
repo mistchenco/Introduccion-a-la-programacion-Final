@@ -133,10 +133,27 @@ function existeLetra($coleccionLetras,$letra){
 * @param array $coleccionPalabras
 * @return array  colección de palabras modificada con la nueva palabra.
 */
-function agregarPalabra()//prueba
-/*>>> Completar la interfaz y cuerpo de la función. Debe respetar la documentación <<<*/
+function agregarPalabra($coleccionPalabras){
 
-//okkey
+//$palabraNueva STRING
+    do{
+        echo "ingrese la palabra nueva";
+        $palabraNueva=strtolower(fgets(STDIN));
+        $existe=existePalabra($coleccionPalabras,$palabraNueva);
+        $contadorPalabra=count($coleccionPalabras);    
+        
+        if(!$existe){
+            $coleccionPalabras[$contadorPalabra]["palabra"]=$palabraNueva;
+            echo "Ingrese pista ";
+            $coleccionPalabras[$contadorPalabra]["pista"]=strtolower(fgets(STDIN));
+            echo "Ingrese puntaje: ";
+            $coleccionPalabras[$contadorPalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
+        }else{
+            echo "La palabra ya existe en el listado: ";
+        }
+    }while($existe);
+return $coleccionPalabras;
+}
 /**
 * Obtener indice aleatorio entre 2 numeros $min y $max
 *@param $min
@@ -243,6 +260,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     $coleccionLetras = dividirPalabraEnLetras($pal);
     //print_r($coleccionLetras);
     $puntaje = 0;
+    $palabraFueDescubierta=palabraDescubierta($coleccionLetras);   
     
     
     /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
@@ -270,6 +288,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
 * @return array coleccion de juegos modificada
 */
 function agregarJuego($coleccionJuegos,$puntos,$indicePalabra){
+    
     $coleccionJuegos[] = array("puntos"=> $puntos, "indicePalabra" => $indicePalabra);    
     return $coleccionJuegos;
 }
