@@ -258,17 +258,20 @@ function stringLetrasDescubiertas($coleccionLetras){
 function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     $pal = $coleccionPalabras[$indicePalabra]["palabra"];
     $coleccionLetras = dividirPalabraEnLetras($pal);
-    //print_r($coleccionLetras);
     $puntaje = 0;
+    $pedirLetra=true;
     $palabraFueDescubierta=palabraDescubierta($coleccionLetras);   
     
     
     /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
     
     //Mostrar pista:
-    
+    echo $coleccionPalabras[$indicePalabra]["pista"];
     //solicitar letras mientras haya intentos y la palabra no haya sido descubierta:
     
+    if($pedirLetra && $cantIntentos>0){
+        $pedirLetra=solicitarLetra();
+    }
     If($palabraFueDescubierta){
         //obtener puntaje:
         
@@ -344,7 +347,11 @@ do{
     $opcion = seleccionarOpcion();
     switch ($opcion) {
     case 1: //Jugar con una palabra aleatoria
-
+            $cantIntentos="CANT_INTENTOS";
+            $min=0;
+            $maximo=count($coleccionPalabras);
+            $indiceAleatorioPrincipal=indiceAleatorioEntre($min,$maximo);
+            $jugarPrincipal=jugar($coleccionPalabras, $indiceAleatorioPrincipal, $cantIntentos);
         break;
     case 2: //Jugar con una palabra elegida
 
