@@ -119,11 +119,12 @@ function existePalabra($coleccionPalabras,$palabra){
 function existeLetra($coleccionLetras,$letra){
     //$cuentaLetras INT , $i INT 
     $descubierta = false;
+    echo $letra." Verificando";
     for ($i = 0; $i < count($coleccionLetras); $i++) { 
-        if (($coleccionLetras[$i]["letra"]==$letra)){
+          if (($coleccionLetras[$i]["letra"] == $letra)){
           $descubierta=true;
         }
-        $i++;        
+         
     }
     return $descubierta;      
 }
@@ -192,13 +193,10 @@ function palabraDescubierta($coleccionLetras){
     //$palabradescubierta BOOLEAN
     //$i INT , $fin INT
     $palabraDescubierta=true;
-    $i=0;
-    $fin=count ($coleccionLetras);
-    while($palabraDescubierta && $i<$fin){
+    for ($i = 0; $i < count($coleccionLetras); $i++) {
         if(!($coleccionLetras[$i]["descubierta"])){
             $palabraDescubierta=false;
         }
-    $i++;
     }
 return $palabraDescubierta;    
 }
@@ -432,6 +430,11 @@ do{
             $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceAleatorioPrincipal, $cantIntentos);
         break;
     case 2: //Jugar con una palabra elegida
+            $cantIntentos=6;
+            $min=0;
+            $maximo=count($coleccionPalabrasPrincipal);
+            $indiceJuegoPrincipal = solicitarIndiceEntre($min, $maximo);
+            $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceJuegoPrincipal, $cantIntentos);
 
         break;
     case 3: //Agregar una palabra al listado
