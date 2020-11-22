@@ -238,8 +238,7 @@ function destaparLetra($coleccionLetras, $letra){
    $i=0;
    $fin=count($coleccionLetras);
    while($i<$fin){
-        $destapar=existeLetra($coleccionLetras,$letra);
-        if($destapar){
+        if($coleccionletras[$i]["letra"]==$letra){
             $coleccionLetras[$i]["descubierta"]=true;
         }
    $i++;
