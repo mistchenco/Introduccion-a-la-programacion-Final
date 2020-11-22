@@ -96,6 +96,9 @@ function seleccionarOpcion(){
 * @return boolean
 */
 function existePalabra($coleccionPalabras,$palabra){
+    // $cantPal Int
+    //$i INT
+    //$existe Boolean
     $i=0;
     $cantPal = count($coleccionPalabras);
     $existe = false;
@@ -115,6 +118,7 @@ function existePalabra($coleccionPalabras,$palabra){
 * @return boolean
 */
 function existeLetra($coleccionLetras,$letra){
+    //$cuentaLetras INT , $i INT 
     $cuentaLetras = count($coleccionLetras);
     $i=0;
     $descubierta = false;
@@ -139,15 +143,15 @@ function agregarPalabra($coleccionPalabras){
     do{
         echo "ingrese la palabra nueva";
         $palabraNueva=strtolower(fgets(STDIN));
-        $existe=existePalabra($coleccionPalabras,$palabraNueva);
-        $contadorPalabra=count($coleccionPalabras);    
+        $existe=existePalabra($coleccionPalabras,$palabraNueva);//chequea que la palabra no este cargada
+        $indicePalabra=count($coleccionPalabras);    
         
         if(!$existe){
-            $coleccionPalabras[$contadorPalabra]["palabra"]=$palabraNueva;
+            $coleccionPalabras[$indicePalabra]["palabra"]=$palabraNueva;
             echo "Ingrese pista ";
-            $coleccionPalabras[$contadorPalabra]["pista"]=strtolower(fgets(STDIN));
+            $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
             echo "Ingrese puntaje: ";
-            $coleccionPalabras[$contadorPalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
+            $coleccionPalabras[$indicePalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
         }else{
             echo "La palabra ya existe en el listado: ";
         }
@@ -188,7 +192,8 @@ function solicitarIndiceEntre($min,$max){
 * @return boolean
 */
 function palabraDescubierta($coleccionLetras){
-    //$palabradescubierta boolean
+    //$palabradescubierta BOOLEAN
+    //$i INT , $fin INT
     $palabraDescubierta=true;
     $i=0;
     $fin=count ($coleccionLetras);
@@ -205,6 +210,7 @@ return $palabraDescubierta;
 * @ return string
 */
 function solicitarLetra(){
+    //$letraCorrecta BOOLEAN
     $letraCorrecta = false;
     do{
         echo "Ingrese una letra: ";
@@ -228,8 +234,18 @@ function solicitarLetra(){
 * @return array colección de letras modificada.
 */
 function destaparLetra($coleccionLetras, $letra){
-    
+   // $i INT, $fin INT
 
+   $i=0;
+   $fin=count($coleccionLetras);
+   while($i<$fin){
+        $destapar=existeLetra($coleccionLetras,$letra);
+        if($destapar){
+            $coleccionLetras[$i]["descubierta"]=true;
+        }
+   $i++;
+   }
+   return $coleccionLetras; 
 }
 
 /**
@@ -238,11 +254,12 @@ function destaparLetra($coleccionLetras, $letra){
 * @return string  Ejemplo: "he**t*t*s"
 */
 function stringLetrasDescubiertas($coleccionLetras){
+    //$pal STRING
     $pal = "";
     
     for ($i=0; $i< count($coleccionLetras); $i++){
         if ( $coleccionLetras[$i]["descubierta"]) {
-            $pal = $pal. $coleccionLetras[$i]["descubierta"]; //Si la letra posee valor V en el array la grego
+            $pal = $pal. $coleccionLetras[$i]["letra"]; //Si la letra posee valor V en el array la grego
         }else{             //Si la letra posee valor F en el array agrego un *
             $pal= $pal."*";
         }
