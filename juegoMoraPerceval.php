@@ -229,7 +229,7 @@ function solicitarLetra(){
 */
 function destaparLetra($coleccionLetras, $letra){
     
-    /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
+   
 }
 
 /**
@@ -240,8 +240,13 @@ function destaparLetra($coleccionLetras, $letra){
 function stringLetrasDescubiertas($coleccionLetras){
     $pal = "";
     
-    /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
-    
+    for ($i=0; $i< count($coleccionLetras); $i++){
+        if ( $coleccionLetras[$i]["descubierta"]) {
+            $pal = $pal. $coleccionLetras[$i]["descubierta"]; //Si la letra posee valor V en el array la grego
+        }else{             //Si la letra posee valor F en el array agrego un *
+            $pal= $pal."*";
+        }
+    } 
     return $pal;
 }
 
@@ -337,7 +342,7 @@ function juegoConMasPuntaje ($coleccionJuegos){
     $indiceJuego = 0;
     // busco en todos los juegos el mayor puntaje 
 
-    for ($i=0; $i< count ($coleccionJuegos); $i++){
+    for ($i=0; $i< count($coleccionJuegos); $i++){
         $ptos = $coleccionJuegos[$i]["puntos"];
         if ($ptos > $maximoPuntaje) {
             $maximoPuntaje = $ptos;
