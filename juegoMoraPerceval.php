@@ -432,7 +432,7 @@ do{
     case 2: //Jugar con una palabra elegida
             $cantIntentos=6;
             $min=0;
-            $maximo=count($coleccionPalabrasPrincipal);
+            $maximo=count($coleccionPalabrasPrincipal)-1;
             $indiceJuegoPrincipal = solicitarIndiceEntre($min, $maximo);
             $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceJuegoPrincipal, $cantIntentos);
 
