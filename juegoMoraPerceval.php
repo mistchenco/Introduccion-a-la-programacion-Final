@@ -255,8 +255,13 @@ function destaparLetra($coleccionLetras, $letra){
 function stringLetrasDescubiertas($coleccionLetras){
     //$pal STRING
     $pal = "";
+<<<<<<< Updated upstream
+=======
+    print_r($coleccionLetras);
+    
+>>>>>>> Stashed changes
     for ($i=0; $i< count($coleccionLetras); $i++){
-        if ( $coleccionLetras[$i]["descubierta"]) {
+        if ( $coleccionLetras[$i]["descubierta"]==1) {
             $pal = $pal. $coleccionLetras[$i]["letra"]; //Si la letra posee valor V en el array la grego
         }else{             //Si la letra posee valor F en el array agrego un *
             $pal= $pal."*";
@@ -290,14 +295,19 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
         $pedirLetra=solicitarLetra();
         $verificaLetra=existeLetra($coleccionLetras, $pedirLetra);//devuelve booleano V o F
         if($verificaLetra){
+<<<<<<< Updated upstream
             $coleccionLetras=destaparLetra($coleccionLetras,$pedirLetra);
             print_r($coleccionLetras);
+=======
+            $coleccionLetrasJugar=destaparLetra($coleccionLetras,$pedirLetra);
+            
+>>>>>>> Stashed changes
             $palabraFueDescubierta=palabraDescubierta($coleccionLetras);
         }else{
             $cantIntentos=$cantIntentos-1;
             echo "La letra" . $pedirLetra."no pertenecea la palabra. Quedan ".$cantIntentos." intentos \n";
         }
-        $cadenaLetra=stringLetrasDescubiertas($coleccionLetras);
+        $cadenaLetra=stringLetrasDescubiertas($coleccionLetrasJugar);
         echo "Palabra a descubir: ".stringLetrasDescubiertas($cadenaLetra)."\n";
         
     }while(!$palabraFueDescubierta && $cantIntentos>0);
