@@ -442,7 +442,7 @@ do{
         break;
     case 4: //Mostrar la información completa de un número de juego
             $min=0;
-            $maximo=count($coleccionJuegosPrincipal);
+            $maximo=count($coleccionJuegosPrincipal)-1;
             echo "Mostrar informacion de Juego";
             $indiceJuegoPrincipal= solicitarIndiceEntre($min,$maximo);
             mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
