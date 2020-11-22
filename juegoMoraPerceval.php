@@ -119,7 +119,7 @@ function existePalabra($coleccionPalabras,$palabra){
 function existeLetra($coleccionLetras,$letra){
     //$cuentaLetras INT , $i INT 
     $descubierta = false;
-    echo $letra." Verificando";
+    echo $letra." Verificando \n";
     for ($i = 0; $i < count($coleccionLetras); $i++) { 
           if (($coleccionLetras[$i]["letra"] == $letra)){
           $descubierta=true;
