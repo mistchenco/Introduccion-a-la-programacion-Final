@@ -48,9 +48,8 @@ function dividirPalabraEnLetras($palabra){
     $coleccionLetras=[];
     for ($i=0; $i<strlen($palabra); $i++){
             $coleccionLetras[$i]["letra"]=$palabra[$i];
-            $coleccionLetras[$i]["descubierta"]=false;  
-          
-            
+            $coleccionLetras[$i]["descubierta"] = false;  
+             
     }
           
     return $coleccionLetras;
@@ -255,8 +254,7 @@ function destaparLetra($coleccionLetras, $letra){
 */
 function stringLetrasDescubiertas($coleccionLetras){
     //$pal STRING
-    $pal = "asdasd";
-    print_r($coleccionLetras);
+    $pal = "";
     for ($i=0; $i< count($coleccionLetras); $i++){
         if ( $coleccionLetras[$i]["descubierta"]) {
             $pal = $pal. $coleccionLetras[$i]["letra"]; //Si la letra posee valor V en el array la grego
@@ -282,24 +280,18 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     //echo $pal."\n";
     $coleccionLetras = dividirPalabraEnLetras($pal);//devuelve el arreglo coleccionLetras (letra y descubierta T o F)
     $puntaje = 0;
-    
-    //echo $cantIntentos."\n";
-    //$palabraFueDescubierta=palabraDescubierta($coleccionLetras);
     $palabraFueDescubierta=false;//bandera
-    
-    /*>>> Completar el cuerpo de la función, respetando lo indicado en la documentacion <<<*/
-    
+          
     //Mostrar pista:
-    echo $coleccionPalabras[$indicePalabra]["pista"];
+    echo "Pista ".$coleccionPalabras[$indicePalabra]["pista"]."\n";
+        echo "Palabra a descubir: ".stringLetrasDescubiertas($coleccionLetras)."\n";
     //solicitar letras mientras haya intentos y la palabra no haya sido descubierta:
-    
-    do{
-        
+        do{
         $pedirLetra=solicitarLetra();
         $verificaLetra=existeLetra($coleccionLetras, $pedirLetra);//devuelve booleano V o F
         if($verificaLetra){
             $coleccionLetras=destaparLetra($coleccionLetras,$pedirLetra);
-            
+            print_r($coleccionLetras);
             $palabraFueDescubierta=palabraDescubierta($coleccionLetras);
         }else{
             $cantIntentos=$cantIntentos-1;
