@@ -76,7 +76,7 @@ function seleccionarOpcion(){
         echo "--------------------------------------------------------------\n";
         // Validamos la opcion ingresada sino solicitamos ingrese un opcion correcta
         do{
-            echo "Indique una opcion valida";
+            echo "Indique una opcion valida :";
             $opcion = (trim(fgets(STDIN)));
             if($opcion < 1 && $opcion > 8){
                 echo "Debe ingresar una opcion valida \n";
@@ -327,8 +327,26 @@ function mostrarJuego($coleccionJuegos,$coleccionPalabras,$indiceJuego){
     echo "\n";
 }
 
+/**
+* Buscar juego con mas puntaje
+* @param array $coleccionJuegos
+* @return int
+*/
+function juegoConMasPuntaje ($coleccionJuegos){
+    $maximoPuntaje = 0;
+    $indiceJuego = 0;
+    // busco en todos los juegos el mayor puntaje 
 
-/*>>> Implementar las funciones necesarias para la opcion 5 del menú <<<*/
+    for ($i=0; $i< count ($coleccionJuegos); $i++){
+        $ptos = $coleccionJuegos[$i]["puntos"];
+        if ($ptos > $maximoPuntaje) {
+            $maximoPuntaje = $ptos;
+            $indiceJuego = $i;
+        }
+    } 
+    return $indiceJuego;    
+}
+
 
 /*>>> Implementar las funciones necesarias para la opcion 6 del menú <<<*/
 
@@ -367,7 +385,9 @@ do{
             mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
         break;
     case 5: //Mostrar la información completa del primer juego con más puntaje
-
+            echo "Primer Juego con mas Puntaje";
+            $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal);
+            mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
         break;
     case 6: //Mostrar la información completa del primer juego que supere un puntaje indicado por el usuario
 
