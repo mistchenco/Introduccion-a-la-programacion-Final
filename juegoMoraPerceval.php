@@ -103,16 +103,14 @@ function existePalabra($coleccionPalabras,$palabra){
     echo $existe;
     $i=0;
     $n=count($coleccionPalabras);
-    while (($i < $n && !$existe)){
-       echo "vamos a ver ".$palabra." compara con ".$coleccionPalabras[$i]["palabra"]."\n";
-       if ($coleccionPalabras[$i]["palabra"] == $palabra){
-        $existe= true;
-        echo $existe."es falsa ahora\n";
-       }
-       $i++;
-    }
-        return $existe;  
-   }
+        while (($i < $n && !$existe)){
+            if ($coleccionPalabras[$i]["palabra"] == $palabra){
+            $existe= true;
+            }
+            $i++;
+        }
+    return $existe;  
+}
     
 
 
@@ -148,26 +146,37 @@ function existeLetra($coleccionLetras,$letra){
 function agregarPalabra($coleccionPalabras){
 //$palabraNueva STRING
 
-do{
-        echo "ingrese la palabra nueva: ";
+    do{
+        echo "\n Ingrese una palabra nueva: ";
         $palabraNueva= (trim(fgets(STDIN))); //strtolower(fgets(STDIN));
         $existe=existePalabra($coleccionPalabras,$palabraNueva);//chequea que la palabra no este cargada
         $indicePalabra=count($coleccionPalabras);    
-        echo "numero de  palabra ".$indicePalabra;
         if($existe){
             echo "La palabra ya existe en el listado";
             
         }else{
-            echo "No existe la palabra \n";
+            echo "No existe la palabra, necesitamos agregar la pista y el puntaje \n";
             $coleccionPalabras[$indicePalabra]["palabra"]=$palabraNueva;
             echo "Ingrese pista ";
             $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
-            echo "Ingrese puntaje: "; // verificar que sean numeros
-            $coleccionPalabras[$indicePalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
+            
+            // verificamos que puntaje sea numeros
+            do{
+                echo "Ingrese puntaje: ";
+                $puntajeIngresado = strtolower(trim(fgets(STDIN)));
+                if($puntajeIngresado<1 || $puntajeIngresado >1000){
+                    echo "Debe ingresar un puntaje valido!\n";
+                    $puntajeCorrecto= false;
+                }else{
+                    $puntajeCorrecto = true;
+                }
+                
+            }while(!$puntajeCorrecto);
+            $coleccionPalabras[$indicePalabra]["puntosPalabra"]=$puntajeIngresado;
         }
-}while($existe);
+    }while($existe);
 
-return $coleccionPalabras;
+    return $coleccionPalabras;
 }
 /**
 * Obtener indice aleatorio entre 2 numeros $min y $max
@@ -294,7 +303,6 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
         do{
         
         $pedirLetra=solicitarLetra();
-        echo "Vamos a verificar si existe esa letra \n";
         $verificaLetra=existeLetra($coleccionLetras, $pedirLetra);//devuelve booleano V o F
         if($verificaLetra){
             echo "existe la letra \n";
