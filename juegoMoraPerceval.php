@@ -298,11 +298,18 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     }while(!$palabraFueDescubierta && $cantIntentos>0);
     
     If($palabraFueDescubierta){
-        //obtener puntaje:
+        
         $puntaje=$coleccionPalabras[$indicePalabra]["puntosPalabra"]+$cantIntentos;
         echo "\n¡¡¡¡¡¡GANASTE ".$puntaje." puntos!!!!!!\n";
     }else{
         echo "\n¡¡¡¡¡¡AHORCADO AHORCADO!!!!!!\n";
+        echo "\n +-----+ \n";
+        echo"\n |     O \n";
+        echo"\n |    /|\ \n";
+        echo"\n |    / \ \n";
+        echo"\n | \n";
+        echo"\n | \n";
+        echo"\n  --- \n";
     }
     
     return $puntaje;
