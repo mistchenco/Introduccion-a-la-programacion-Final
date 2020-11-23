@@ -375,21 +375,46 @@ function mostrarJuego($coleccionJuegos,$coleccionPalabras,$indiceJuego){
 }
 
 /**
-* Buscar juego con mas puntaje
+* Buscar juego con mas puntaje para opcion 5
 * @param array $coleccionJuegos
 * @return int
 */
-function juegoConMasPuntaje ($coleccionJuegos,$maximoPuntaje){
-    $indiceJuego = 0;
+function juegoConMasPuntaje ($coleccionJuegos){
+    $n = count($coleccionJuegos);
     $ptos = 0;
+    $indiceJuego = 0;
+    for($j=0; $j<$n; $j++){
+        $puntosarreglo= $coleccionJuegos[$j]["puntos"];
+        echo $puntosarreglo."\n";
+        if ( $ptos < $puntosarreglo){
+            $ptos=$coleccionJuegos[$j]["puntos"];
+            echo $ptos."\n";
+            $indiceJuego = $j;
+        }
+    }
+    return $indiceJuego;
+}
+
+/**
+* Buscar juego con mas puntaje que el que me el usuario para opcion 6
+* @param array $coleccionJuegos
+* @return int
+*/
+function primerJuegoConMasPuntaje ($coleccionJuegos,$maximoPuntaje){   
+    $indiceJuego=-1;
+    $maximo = false;
+    $i=0;
+    $n=count($coleccionJuegos);
     // busco en todos los juegos el mayor puntaje 
 
-    for ($i=0; $i< count($coleccionJuegos); $i++){
+    while ($i< $n && !$maximo ){
         $ptos = $coleccionJuegos[$i]["puntos"];
         if ($ptos > $maximoPuntaje) {
             $maximoPuntaje = $ptos;
+            $maximo = true;
             $indiceJuego = $i;
         }
+    $i++;
     } 
     return $indiceJuego;    
 }
@@ -415,7 +440,7 @@ function ingresarPuntosUsuario (){
 * Verifica y existe juego con puntos
 * @return boolean
 */
-function verificaJuegoConMasPuntaje ($coleccionJuegos,$puntosUsuario){
+/**function verificaJuegoConMasPuntaje ($coleccionJuegos,$puntosUsuario){
     $hayJuegoMayor = false;
     // busco en todos juegos el mayor puntaje si existe algu
 
@@ -488,17 +513,19 @@ do{
         break;
     case 5: //Mostrar la información completa del primer juego con más puntaje
             echo "Primer Juego con mas Puntaje";
-            $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal,0);
+            $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal);
             mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
         break;
     case 6: //Mostrar la información completa del primer juego que supere un puntaje indicado por el usuario
             $puntosUsuarioPrincipal = ingresarPuntosUsuario();
-            if (verificaJuegoConMasPuntaje($coleccionJuegosPrincipal,$puntosUsuarioPrincipal)){
+            $primerJuego = primerJuegoConMasPuntaje($coleccionJuegosPrincipal,$puntosUsuarioPrincipal);
+            if ($primerjuego>-1){
                 echo "el Juego con mas Puntaje que: ".$puntosUsuarioPrincipal."\n";
-                $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal,0);
+                $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal,$puntosUsuarioPrincipal);
                 mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
             }else{
                 echo "No existe un juego que tenga mas de".$puntosUsuarioPrincipal."\n";
+                echo "Segun enunciado retorno ".$primerJuego."\n";
             }
 
         break;
