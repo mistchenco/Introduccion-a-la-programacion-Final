@@ -484,7 +484,7 @@ do{
     $opcion = seleccionarOpcion();
     switch ($opcion) {
     case 1: //Jugar con una palabra aleatoria
-            $cantIntentos=6;
+            $cantIntentos=CANT_INTENTOS;
             $min=0;
             $maximo=count($coleccionPalabrasPrincipal)-1;
             $indiceAleatorioPrincipal=indiceAleatorioEntre($min,$maximo);
@@ -534,3 +534,8 @@ do{
     }
 }while($opcion != 8);
 
+/**switch: La sentencia switch es similar a una serie de sentencias IF en la misma expresión. 
+En muchas ocasiones, es posible que se quiera comparar la misma variable (o expresión) con muchos valores diferentes, 
+y ejecutar una parte de código distinta dependiendo de a que valor es igual. 
+Para esto es exactamente la expresión switch.
+*/
