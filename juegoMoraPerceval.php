@@ -519,10 +519,9 @@ do{
     case 6: //Mostrar la información completa del primer juego que supere un puntaje indicado por el usuario
             $puntosUsuarioPrincipal = ingresarPuntosUsuario();
             $primerJuego = primerJuegoConMasPuntaje($coleccionJuegosPrincipal,$puntosUsuarioPrincipal);
-            if ($primerjuego>-1){
+            if ($primerJuego > -1){
                 echo "el Juego con mas Puntaje que: ".$puntosUsuarioPrincipal."\n";
-                $indiceJuegoPrincipal= juegoConMasPuntaje($coleccionJuegosPrincipal,$puntosUsuarioPrincipal);
-                mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$indiceJuegoPrincipal);
+                mostrarJuego($coleccionJuegosPrincipal,$coleccionPalabrasPrincipal,$primerJuego);
             }else{
                 echo "No existe un juego que tenga mas de".$puntosUsuarioPrincipal."\n";
                 echo "Segun enunciado retorno ".$primerJuego."\n";
