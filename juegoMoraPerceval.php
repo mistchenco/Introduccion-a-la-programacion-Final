@@ -99,18 +99,18 @@ function existePalabra($coleccionPalabras,$palabra){
     //$i INT
     //$existe Boolean
     
-    echo "Coleccion dentro de existe";
-
     $existe = false;
+    echo $existe;
     $i=0;
     $n=count($coleccionPalabras);
-    echo $palabra." Verificando \n";
-    while(($i < $n && !$existe)){
-       echo "entra";
-       print_r ($coleccionPalabras);
-       $existe= $coleccionPalabras[$i]["palabra"] == $palabra;
-        $i++;
-        }
+    while (($i < $n && !$existe)){
+       echo "vamos a ver ".$palabra." compara con ".$coleccionPalabras[$i]["palabra"]."\n";
+       if ($coleccionPalabras[$i]["palabra"] == $palabra){
+        $existe= true;
+        echo $existe."es falsa ahora\n";
+       }
+       $i++;
+    }
         return $existe;  
    }
     
@@ -147,10 +147,10 @@ function agregarPalabra($coleccionPalabras){
 
 do{
         echo "ingrese la palabra nueva: ";
-        $palabraNueva=strtolower(fgets(STDIN));
+        $palabraNueva= (trim(fgets(STDIN))); //strtolower(fgets(STDIN));
         $existe=existePalabra($coleccionPalabras,$palabraNueva);//chequea que la palabra no este cargada
         $indicePalabra=count($coleccionPalabras);    
-       
+        echo "numero de  palabra ".$indicePalabra;
         if($existe){
             echo "La palabra ya existe en el listado";
             
@@ -159,7 +159,7 @@ do{
             $coleccionPalabras[$indicePalabra]["palabra"]=$palabraNueva;
             echo "Ingrese pista ";
             $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
-            echo "Ingrese puntaje: ";
+            echo "Ingrese puntaje: "; // verificar que sean numeros
             $coleccionPalabras[$indicePalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
         }
 }while($existe);
@@ -457,7 +457,7 @@ do{
 
         break;
     case 3: //Agregar una palabra al listado
-        $agregar=agregarPalabra($coleccionPalabrasPrincipal);
+        $coleccionPalabrasPrincipal=agregarPalabra($coleccionPalabrasPrincipal);
         break;
     case 4: //Mostrar la información completa de un número de juego
             $min=0;
