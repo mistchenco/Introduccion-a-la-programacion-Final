@@ -433,12 +433,14 @@ function verificaJuegoConMasPuntaje ($coleccionJuegos,$puntosUsuario){
 */
 function mostrarPalabrasOrdenadas ($coleccionPalabras){
     // busco en todos juegos el mayor puntaje si existe algu
-    print_r($coleccionPalabras);
-    ksort($coleccionPalabras,"palabra");
-
-    foreach ($coleccionPalabras as $indice => $palabra){
-        echo "$indice = $palabra\n";
-    }  
+    //print_r($coleccionPalabras);
+    $palabrasOrdenadas = $coleccionPalabras;
+    sort($palabrasOrdenadas);
+    echo "\n Palabras Ordenadas por Orden Alfabetico \n";
+    for($i=0; $i< count($palabrasOrdenadas);$i++){
+        echo $palabrasOrdenadas[$i]["palabra"]."\n";
+    }
+    
 }
 
 
