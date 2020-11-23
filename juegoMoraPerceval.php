@@ -127,12 +127,13 @@ function existeLetra($coleccionLetras,$letra){
     $i =0;
     $descubierta = false;
     echo $letra." Verificando \n";
-    do{
+    
+    while($i < $cuentaLetra && !$descubierta){
         if (($coleccionLetras[$i]["letra"] == $letra)){
             $descubierta=true;
-        }
+            }
         $i++;
-    }while($i < $cuentaLetra && $descubierta);
+    }
 
     return $descubierta;      
 }
@@ -436,7 +437,9 @@ function mostrarPalabrasOrdenadas ($coleccionPalabras){
     //print_r($coleccionPalabras);
     $palabrasOrdenadas = $coleccionPalabras;
     sort($palabrasOrdenadas);
-    echo "\n Palabras Ordenadas por Orden Alfabetico \n";
+    echo "\n Palabras Ordenadas por Orden Alfabetico muestra con print_r segun enunciado\n";
+    print_r($palabrasOrdenadas);
+    echo "\n Palabras Ordenadas por Orden Alfabetico como nos gusta a nosotros\n";
     for($i=0; $i< count($palabrasOrdenadas);$i++){
         echo $palabrasOrdenadas[$i]["palabra"]."\n";
     }
@@ -458,9 +461,10 @@ do{
     case 1: //Jugar con una palabra aleatoria
             $cantIntentos=6;
             $min=0;
-            $maximo=count($coleccionPalabrasPrincipal);
+            $maximo=count($coleccionPalabrasPrincipal)-1;
             $indiceAleatorioPrincipal=indiceAleatorioEntre($min,$maximo);
             $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceAleatorioPrincipal, $cantIntentos);
+            $coleccionJuegosPrincipal = agregarJuego($coleccionJuegosPrincipal,$jugarPrincipal,$indiceAleatorioPrincipal);
             
         break;
     case 2: //Jugar con una palabra elegida
@@ -469,7 +473,8 @@ do{
             $maximo=count($coleccionPalabrasPrincipal)-1;
             $indiceJuegoPrincipal = solicitarIndiceEntre($min, $maximo);
             $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceJuegoPrincipal, $cantIntentos);
-
+            $coleccionJuegosPrincipal = agregarJuego($coleccionJuegosPrincipal,$jugarPrincipal,$indiceJuegoPrincipal);
+            
         break;
     case 3: //Agregar una palabra al listado
         $coleccionPalabrasPrincipal=agregarPalabra($coleccionPalabrasPrincipal);
