@@ -305,8 +305,9 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
         }else{
             $cantIntentos=$cantIntentos-1;
             echo "La letra ". $pedirLetra." no pertenece a la palabra. Quedan ".$cantIntentos." intentos \n";
+            munieco($cantIntentos);
         }
-        $cadenaLetra=stringLetrasDescubiertas($coleccionLetras);
+        
         echo "Palabra a descubir: ".stringLetrasDescubiertas($coleccionLetras)."\n";
         
     }while(!$palabraFueDescubierta && $cantIntentos>0);
@@ -471,9 +472,59 @@ function mostrarPalabrasOrdenadas ($coleccionPalabras){
     
 }
 
-
-
-
+/**
+* Muestra el dibujo del ahorcado
+* @numeroDeIntentos
+*/
+function munieco ($cantIntentos){
+    switch ($cantIntentos) {
+        case 5:     
+            echo " ┌─────┐ \n";
+            echo " │     O \n";
+            echo " │      \n";
+            echo " │      \n";
+            echo " │        \n";
+            echo " │ \n";
+            echo " └───────── \n";
+        break;
+        case 4:     
+            echo " ┌─────┐ \n";
+            echo " │     O \n";
+            echo " │     ┼ \n";
+            echo " │      \n";
+            echo " │       \n";
+            echo " │ \n";
+            echo " └───────── \n";
+        break;
+        case 3:     
+            echo " ┌─────┐ \n";
+            echo " │     O \n";
+            echo " │    ┌┼ \n";
+            echo " │     ┴  \n";
+            echo " │        \n";
+            echo " │ \n";
+            echo " └───────── \n";
+        break;
+        case 2:     
+            echo " ┌─────┐ \n";
+            echo " │     O \n";
+            echo " │    ┌┼┘ \n";
+            echo " │    ┌┴  \n";
+            echo " │        \n";
+            echo " │ \n";
+            echo " └───────── \n";
+        break;
+        case 1:     
+            echo " ┌─────┐ \n";
+            echo " │     O \n";
+            echo " │    ┌┼┘ \n";
+            echo " │    ┌┴  \n";
+            echo " │    │   \n";
+            echo " │ \n";
+            echo " └───────── \n";
+        break;
+        }
+    }
 /******************************************/
 /************** PROGRAMA PRINCIAL *********/
 /******************************************/
