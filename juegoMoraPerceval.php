@@ -72,7 +72,7 @@ function seleccionarOpcion(){
         echo "\n ( 6 ) Mostrar la informacion completa del primer juego que supere un puntaje indicado por el usuario"; 
         echo "\n ( 7 ) Mostrar la lista de palabras ordenada por puntaje"; 
         echo "\n ( 8 ) Salir"; 
-        echo "--------------------------------------------------------------\n";
+        echo "\n --------------------------------------------------------------\n";
         // Validamos la opcion ingresada sino solicitamos ingrese un opcion correcta
         do{
             echo "Indique una opcion valida :";
@@ -98,16 +98,23 @@ function existePalabra($coleccionPalabras,$palabra){
     // $cantPal Int
     //$i INT
     //$existe Boolean
-    $i=0;
-    $cantPal = count($coleccionPalabras);
-    $existe = false;
-    while($i<$cantPal && !$existe){
-        $existe = $coleccionPalabras[$i]["palabra"] == $palabra;
-        $i++;
-    }
     
-    return $existe;
-}
+    echo "Coleccion dentro de existe";
+
+    $existe = false;
+    $i=0;
+    $n=count($coleccionPalabras);
+    echo $palabra." Verificando \n";
+    while(($i < $n && !$existe)){
+       echo "entra";
+       print_r ($coleccionPalabras);
+       $existe= $coleccionPalabras[$i]["palabra"] == $palabra;
+        $i++;
+        }
+        return $existe;  
+   }
+    
+
 
 
 /**
@@ -122,7 +129,7 @@ function existeLetra($coleccionLetras,$letra){
     echo $letra." Verificando \n";
     for ($i = 0; $i < count($coleccionLetras); $i++) { 
           if (($coleccionLetras[$i]["letra"] == $letra)){
-          $descubierta=true;
+                $descubierta=true;
         }
          
     }
@@ -136,24 +143,27 @@ function existeLetra($coleccionLetras,$letra){
 * @return array  colección de palabras modificada con la nueva palabra.
 */
 function agregarPalabra($coleccionPalabras){
-
 //$palabraNueva STRING
-    do{
-        echo "ingrese la palabra nueva";
+
+do{
+        echo "ingrese la palabra nueva: ";
         $palabraNueva=strtolower(fgets(STDIN));
         $existe=existePalabra($coleccionPalabras,$palabraNueva);//chequea que la palabra no este cargada
         $indicePalabra=count($coleccionPalabras);    
-        
-        if(!$existe){
+       
+        if($existe){
+            echo "La palabra ya existe en el listado";
+            
+        }else{
+            echo "No existe la palabra \n";
             $coleccionPalabras[$indicePalabra]["palabra"]=$palabraNueva;
             echo "Ingrese pista ";
             $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
             echo "Ingrese puntaje: ";
             $coleccionPalabras[$indicePalabra]["puntosPalabra"]=strtolower(fgets(STDIN));
-        }else{
-            echo "La palabra ya existe en el listado: ";
         }
-    }while($existe);
+}while($existe);
+
 return $coleccionPalabras;
 }
 /**
@@ -301,6 +311,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
         
         $puntaje=$coleccionPalabras[$indicePalabra]["puntosPalabra"]+$cantIntentos;
         echo "\n¡¡¡¡¡¡GANASTE ".$puntaje." puntos!!!!!!\n";
+    
     }else{
         echo "\n¡¡¡¡¡¡AHORCADO AHORCADO!!!!!!\n";
         echo "\n +-----+ \n";
@@ -435,6 +446,7 @@ do{
             $maximo=count($coleccionPalabrasPrincipal);
             $indiceAleatorioPrincipal=indiceAleatorioEntre($min,$maximo);
             $jugarPrincipal=jugar($coleccionPalabrasPrincipal, $indiceAleatorioPrincipal, $cantIntentos);
+            
         break;
     case 2: //Jugar con una palabra elegida
             $cantIntentos=6;
@@ -445,7 +457,7 @@ do{
 
         break;
     case 3: //Agregar una palabra al listado
-
+        $agregar=agregarPalabra($coleccionPalabrasPrincipal);
         break;
     case 4: //Mostrar la información completa de un número de juego
             $min=0;
