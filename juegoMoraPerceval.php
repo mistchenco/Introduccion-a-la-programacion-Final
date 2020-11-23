@@ -149,7 +149,7 @@ function agregarPalabra($coleccionPalabras){
 
     do{
         echo "\n Ingrese una palabra nueva: ";
-        $palabraNueva= (trim(fgets(STDIN))); //strtolower(fgets(STDIN));
+        $palabraNueva= strtolower(trim(fgets(STDIN))); //strtolower(fgets(STDIN));
         $existe=existePalabra($coleccionPalabras,$palabraNueva);//chequea que la palabra no este cargada
         $indicePalabra=count($coleccionPalabras);    
         if($existe){
@@ -162,7 +162,7 @@ function agregarPalabra($coleccionPalabras){
             $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
             
             // verificamos que puntaje sea numeros con la funcion que ya teniamos
-            echo "Ingrese puntaje: ";
+            
             $puntajeIngresado = ingresarPuntosUsuario();
             
             $coleccionPalabras[$indicePalabra]["puntosPalabra"]=$puntajeIngresado;
@@ -427,11 +427,11 @@ function ingresarPuntosUsuario (){
     do{
         echo "Indique el Puntaje :";
         $puntosUsuario = (trim(fgets(STDIN)));
-        if($puntosUsuario < 1 && $puntosUsuario > 99999){
+        if(is_numeric($puntosUsuario)&& $puntosUsuario>0){
+            $opcionValida = true;
+        }else{
             echo "Debe ingresar una opcion valida \n";
             $opcionValida = false;
-        }else{
-            $opcionValida = true;
         }
     }while(!$opcionValida);
     return $puntosUsuario;
