@@ -424,8 +424,6 @@ function verificaJuegoConMasPuntaje ($coleccionJuegos,$puntosUsuario){
     return $hayJuegoMayor;    
 }
 
-/*>>> Implementar las funciones necesarias para la opcion 6 del menú <<<*/
-
 /*>>> Implementar las funciones necesarias para la opcion 7 del menú <<<*/
 
 
