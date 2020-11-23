@@ -160,18 +160,10 @@ function agregarPalabra($coleccionPalabras){
             echo "Ingrese pista ";
             $coleccionPalabras[$indicePalabra]["pista"]=strtolower(fgets(STDIN));
             
-            // verificamos que puntaje sea numeros
-            do{
-                echo "Ingrese puntaje: ";
-                $puntajeIngresado = strtolower(trim(fgets(STDIN)));
-                if($puntajeIngresado<1 || $puntajeIngresado >1000){
-                    echo "Debe ingresar un puntaje valido!\n";
-                    $puntajeCorrecto= false;
-                }else{
-                    $puntajeCorrecto = true;
-                }
-                
-            }while(!$puntajeCorrecto);
+            // verificamos que puntaje sea numeros con la funcion que ya teniamos
+            echo "Ingrese puntaje: ";
+            $puntajeIngresado = ingresarPuntosUsuario();
+            
             $coleccionPalabras[$indicePalabra]["puntosPalabra"]=$puntajeIngresado;
         }
     }while($existe);
@@ -407,7 +399,7 @@ function juegoConMasPuntaje ($coleccionJuegos,$maximoPuntaje){
 */
 function ingresarPuntosUsuario (){
     do{
-        echo "Indique los puntos que deben ser superado :";
+        echo "Indique el Puntaje :";
         $puntosUsuario = (trim(fgets(STDIN)));
         if($puntosUsuario < 1 && $puntosUsuario > 99999){
             echo "Debe ingresar una opcion valida \n";
@@ -435,7 +427,19 @@ function verificaJuegoConMasPuntaje ($coleccionJuegos,$puntosUsuario){
     return $hayJuegoMayor;    
 }
 
-/*>>> Implementar las funciones necesarias para la opcion 7 del menú <<<*/
+/**
+* Muestra el arreglo $coleccionPalabras ordenado
+* @$coleccionPalabras array
+*/
+function mostrarPalabrasOrdenadas ($coleccionPalabras){
+    // busco en todos juegos el mayor puntaje si existe algu
+    print_r($coleccionPalabras);
+    ksort($coleccionPalabras,"palabra");
+
+    foreach ($coleccionPalabras as $indice => $palabra){
+        echo "$indice = $palabra\n";
+    }  
+}
 
 
 
@@ -492,7 +496,7 @@ do{
 
         break;
     case 7: //Mostrar la lista de palabras ordenada por orden alfabetico
-
+            mostrarPalabrasOrdenadas($coleccionPalabrasPrincipal);
         break;
     }
 }while($opcion != 8);
