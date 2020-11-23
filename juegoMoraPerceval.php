@@ -290,7 +290,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
             $palabraFueDescubierta=palabraDescubierta($coleccionLetras);
         }else{
             $cantIntentos=$cantIntentos-1;
-            echo "La letra ". $pedirLetra." no pertenecea la palabra. Quedan ".$cantIntentos." intentos \n";
+            echo "La letra ". $pedirLetra." no pertenece a la palabra. Quedan ".$cantIntentos." intentos \n";
         }
         $cadenaLetra=stringLetrasDescubiertas($coleccionLetras);
         echo "Palabra a descubir: ".stringLetrasDescubiertas($coleccionLetras)."\n";
