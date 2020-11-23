@@ -125,14 +125,17 @@ function existePalabra($coleccionPalabras,$palabra){
 */
 function existeLetra($coleccionLetras,$letra){
     //$cuentaLetras INT , $i INT 
+    $cuentaLetra = count($coleccionLetras);
+    $i =0;
     $descubierta = false;
     echo $letra." Verificando \n";
-    for ($i = 0; $i < count($coleccionLetras); $i++) { 
-          if (($coleccionLetras[$i]["letra"] == $letra)){
-                $descubierta=true;
+    do{
+        if (($coleccionLetras[$i]["letra"] == $letra)){
+            $descubierta=true;
         }
-         
-    }
+        $i++;
+    }while($i < $cuentaLetra && $descubierta);
+
     return $descubierta;      
 }
 
@@ -314,13 +317,13 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
     
     }else{
         echo "\n¡¡¡¡¡¡AHORCADO AHORCADO!!!!!!\n";
-        echo "\n +-----+ \n";
-        echo"\n |     O \n";
-        echo"\n |    /|\ \n";
-        echo"\n |    / \ \n";
-        echo"\n | \n";
-        echo"\n | \n";
-        echo"\n  --- \n";
+        echo " ┌─────┐ \n";
+        echo " │     O \n";
+        echo " │    ┌┼┘ \n";
+        echo " │    ┌┴┐ \n";
+        echo " │    │ │ \n";
+        echo " │ \n";
+        echo " └───────── \n";
     }
     
     return $puntaje;
