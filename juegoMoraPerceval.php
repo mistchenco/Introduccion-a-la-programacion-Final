@@ -263,10 +263,10 @@ function stringLetrasDescubiertas($coleccionLetras){
     //$pal STRING
     //$i INT
     $pal = "";
-    for ($i=0; $i< count($coleccionLetras); $i++){//Recorrido exhaustivo 
+    for ($i=0; $i< count($coleccionLetras); $i++){//Recorrido exhaustivo para ir construyendo la palabra
         if ( $coleccionLetras[$i]["descubierta"]) {//Condicion que valida si la key "descubierta" tiene valor TRUE
             $pal = $pal. $coleccionLetras[$i]["letra"]; 
-        }else{             //Si la letra posee valor F en el array agrego un *
+        }else{             //Si la letra posee valor F en el array agrego un * en el string
             $pal= $pal."*";
         }
     } 
@@ -312,7 +312,7 @@ function jugar($coleccionPalabras, $indicePalabra, $cantIntentos){
         
         echo "Palabra a descubir: ".stringLetrasDescubiertas($coleccionLetras)."\n";
         
-    }while(!$palabraFueDescubierta && $cantIntentos>0);
+    }while(!$palabraFueDescubierta && $cantIntentos>0);//Estructura que se ejecuta mientras que la palabra no sea descubierta y la cantidad de intentos sea mayor a 0
     
     If($palabraFueDescubierta){
         $puntaje=$coleccionPalabras[$indicePalabra]["puntosPalabra"]+$cantIntentos;
@@ -347,8 +347,8 @@ function agregarJuego($coleccionJuegos,$puntos,$indicePalabra){
 * @param array $coleccionPalabras
 * @param int $indicePalabra
 */
-function mostrarPalabra($coleccionPalabras,$indicePalabra){//funcion que se utiliza en mostrarJuegos
-    //$coleccionPalabras[0]= array("palabra"=> "papa" , "pista" => "se cultiva bajo tierra", "puntosPalabra"=>7);
+function mostrarPalabra($coleccionPalabras,$indicePalabra){//funcion que se utiliza en funcion mostrarJuegos
+   
     echo "Su Palabra: " . $coleccionPalabras[$indicePalabra]["palabra"] . "\n";
     echo "La Pista de dicha palabra es: " . $coleccionPalabras[$indicePalabra]["pista"] . "\n";
     echo "Puntos de la palabra: " . $coleccionPalabras[$indicePalabra]["puntosPalabra"] . "\n";
@@ -369,7 +369,7 @@ function mostrarJuego($coleccionJuegos,$coleccionPalabras,$indiceJuego){
     echo "<-<-< Juego ".$indiceJuego." >->->\n";
     echo "  Puntos ganados: ".$coleccionJuegos[$indiceJuego]["puntos"]."\n";
     echo "  Información de la palabra:\n";
-    mostrarPalabra($coleccionPalabras,$coleccionJuegos[$indiceJuego]["indicePalabra"]);
+    mostrarPalabra($coleccionPalabras,$coleccionJuegos[$indiceJuego]["indicePalabra"]);//lamado a la funcion mostras palabra
     echo "\n";
 }
 
@@ -384,7 +384,7 @@ function juegoConMasPuntaje ($coleccionJuegos){
     $n = count($coleccionJuegos);
     $ptos = 0;
     $indiceJuego = 0;
-    for($j=0; $j<$n; $j++){//Recorrido exhaustivo
+    for($j=0; $j<$n; $j++){//Recorrido exhaustivo para encontrar el puntaje mas alto dentro del arreglo
         $puntosArreglo= $coleccionJuegos[$j]["puntos"];
         echo $puntosArreglo."\n";
         if ( $ptos < $puntosArreglo){
@@ -409,8 +409,7 @@ function primerJuegoConMasPuntaje ($coleccionJuegos,$maximoPuntaje){
     $maximo = false;
     $i=0;
     $n=count($coleccionJuegos);
-    // busco en todos los juegos el mayor puntaje 
-    while ($i< $n && !$maximo ){
+    while ($i< $n && !$maximo ){//Recorrido parcial para encontrar el primer juego con mas puntaje
         $ptos = $coleccionJuegos[$i]["puntos"];
         if ($ptos > $maximoPuntaje) {
             $maximoPuntaje = $ptos;
@@ -447,8 +446,9 @@ function ingresarPuntosUsuario (){
 * @param $coleccionPalabras array
 */
 function mostrarPalabrasOrdenadas ($coleccionPalabras){
-    //
-    $palabrasOrdenadas = $coleccionPalabras;
+    //$i INT
+    //$palabrasOrdenadas ARRAY
+    $palabrasOrdenadas = $coleccionPalabras;//realizamos copia del arreglo para no modificar los indices
     sort($palabrasOrdenadas);// sort Esta función ordena un array. Los elementos estarán ordenados de menor a mayor cuando la función haya terminado.
     echo "\n Palabras Ordenadas por Orden Alfabetico muestra con print_r segun enunciado\n";
     print_r($palabrasOrdenadas);
@@ -460,8 +460,8 @@ function mostrarPalabrasOrdenadas ($coleccionPalabras){
 }
 
 /**
-* Muestra el dibujo del ahorcado
-* @numeroDeIntentos
+* Muestra el dibujo del ahorcado segun la cantidad de intentos
+* @param $cantIntentos
 */
 function munieco ($cantIntentos){
     switch ($cantIntentos) {
