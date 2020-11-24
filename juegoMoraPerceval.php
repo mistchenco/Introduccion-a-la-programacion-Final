@@ -517,6 +517,10 @@ function munieco ($cantIntentos){
 /******************************************/
 /************** PROGRAMA PRINCIAL *********/
 /******************************************/
+
+//$opcion, $min, $maximo, $indiceAleatorioPrincipal $jugarPrincipal,$indiceJuegoPrincipal, $puntosUsuarioPrincipal, $primerJuego INT
+//$coleccionJuegosPrincipal, $coleccionPalabrasPrincipal ARRAY
+
 define("CANT_INTENTOS", 6); //Constante en php para cantidad de intentos que tendrá el jugador para adivinar la palabra.
 $coleccionPalabrasPrincipal=cargarPalabras();//almaceno el arreglo coleccionPalabras
 $coleccionJuegosPrincipal=cargarJuegos();//almaceno el arreglo coleccionJuegos
@@ -534,7 +538,7 @@ do{
             
         break;
     case 2: //Jugar con una palabra elegida
-            $cantIntentos=6;
+            $cantIntentos=CANT_INTENTOS;
             $min=0;
             $maximo=count($coleccionPalabrasPrincipal)-1;
             $indiceJuegoPrincipal = solicitarIndiceEntre($min, $maximo);
