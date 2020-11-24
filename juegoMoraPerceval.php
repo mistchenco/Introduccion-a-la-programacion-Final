@@ -444,13 +444,12 @@ function ingresarPuntosUsuario (){
 
 /**
 * Muestra el arreglo $coleccionPalabras ordenado
-* @$coleccionPalabras array
+* @param $coleccionPalabras array
 */
 function mostrarPalabrasOrdenadas ($coleccionPalabras){
-    // busco en todos juegos el mayor puntaje si existe algu
-    //print_r($coleccionPalabras);
+    //
     $palabrasOrdenadas = $coleccionPalabras;
-    sort($palabrasOrdenadas);
+    sort($palabrasOrdenadas);// sort Esta función ordena un array. Los elementos estarán ordenados de menor a mayor cuando la función haya terminado.
     echo "\n Palabras Ordenadas por Orden Alfabetico muestra con print_r segun enunciado\n";
     print_r($palabrasOrdenadas);
     echo "\n Palabras Ordenadas por Orden Alfabetico como nos gusta a nosotros\n";
@@ -513,12 +512,15 @@ function munieco ($cantIntentos){
         break;
         }
     }
+
+
 /******************************************/
 /************** PROGRAMA PRINCIAL *********/
 /******************************************/
 define("CANT_INTENTOS", 6); //Constante en php para cantidad de intentos que tendrá el jugador para adivinar la palabra.
 $coleccionPalabrasPrincipal=cargarPalabras();//almaceno el arreglo coleccionPalabras
 $coleccionJuegosPrincipal=cargarJuegos();//almaceno el arreglo coleccionJuegos
+
 do{
     $opcion = seleccionarOpcion();
     switch ($opcion) {
