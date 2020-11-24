@@ -264,7 +264,7 @@ function stringLetrasDescubiertas($coleccionLetras){
     //$i INT
     $pal = "";
     for ($i=0; $i< count($coleccionLetras); $i++){//Recorrido exhaustivo 
-        if ( $coleccionLetras[$i]["descubierta"]==1) {//Condicion que valida si la key "descubierta" tiene valor TRUE
+        if ( $coleccionLetras[$i]["descubierta"]) {//Condicion que valida si la key "descubierta" tiene valor TRUE
             $pal = $pal. $coleccionLetras[$i]["letra"]; 
         }else{             //Si la letra posee valor F en el array agrego un *
             $pal= $pal."*";
