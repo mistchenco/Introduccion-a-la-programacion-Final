@@ -1,5 +1,5 @@
-# trabajofinal
-trabajo final de programacion
+# trabajofinalIntroduccionAlaProgramacion
+trabajo final de Introduccion a la programacion
 
 MATERIA: Introduccion a la Programacion.
 AÑO: 2020
